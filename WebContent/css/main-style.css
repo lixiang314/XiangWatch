@@ -1,0 +1,766 @@
+/* 
+****** 目录 ******
+ ---------------------------------------
+   | 1. CSS 导入
+   | 2. 全局
+   | 3. 左侧边栏
+   | 4. index 主体
+   | 5. 表格
+   | 6. 登录页面
+   | 7. 个人状态页面
+   | 8. 人员新增表单
+   | 9. 家属新增表单
+    
+--------------------------------------- */
+
+
+/*1.CSS导入
+----------------------------------------*/
+@import url(font-awesome.min.css);
+@import url(bootstrap.min.css);
+
+/*2.全局
+----------------------------------------*/
+* { font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+body { 
+	/* background-color: #373737;  */
+	position:relative;
+    width:100%;
+    min-height:100%;
+    background-image:url(../image/blue.jpg);
+    background-size:100% 100%;
+    background-attachment:fixed;
+    color:#FFF;
+    z-index:1；
+	}
+a {
+	color:#fdb525;
+}
+a:hover {
+	color:#ffed2f;
+	text-decoration: none;
+}
+h1 { font-size: 24px; }
+.btn a {
+    color: white;
+    text-decoration: none;
+}
+.logo { display: inline-block; }
+.logo {
+    width: 300px;
+    /*height: 50px;*/
+    float: left;
+    font-size: 24px;
+    margin: 0 10px 0 5px;
+    color: #FFF;
+    
+}
+
+.navbar {
+	/* background-image: url(../image/lights.jpg);
+	background-width:200%; */
+	background-color:rgba(0,0,0,0.7); 
+	border:0px;
+	position: fixed;
+	width:100%;
+	
+}
+
+.logo h1 {
+    line-height: 17px;
+}
+
+.logo-img {
+    width: 100px;
+    /*height: 50px;*/
+    float: left;
+    margin: 10px 30px 10px 20px;
+}
+
+.header_w_h {
+	width: 100%;
+	height: 75px;
+}
+.template-page-wrapper {
+    width: 100%;
+    /*  min-height:100%; */
+     position: relative;
+     
+}
+
+.templatemo-content-wrapper {
+    float: left;
+    width: 100%;
+    min-height: 100%;
+    margin-top:55px;
+    
+}
+.templatemo-content {
+    margin: 0 0 0 235px; 
+    min-height: 800px;
+    padding: 25px 20px 0 40px;
+    /* background-color: #EFEFEF; */
+    overflow-x: hidden;
+}
+.templatemo-footer {
+    /* clear: both; */
+    height: 43px;
+    position: fixed;
+    bottom: 0;
+    
+    font-size: 13px;
+    padding: 10px 0 5px 0;
+    width: 100%;
+    text-align: center;
+    color: #ddd;
+    background-color: rgba(255,255,255,0.3);
+
+}
+.margin-bottom-15 { margin-bottom: 15px; }
+.margin-bottom-30 { margin-bottom: 30px; }
+
+
+
+
+/* 2.5. 弹出框
+------------------------------------------------------*/
+/*  {
+	   -webkit-filter: blur(10px); 
+       -moz-filter: blur(5px);
+        -ms-filter: blur(5px);   
+            filter: blur(5px); 
+} */
+
+.modal-content{
+	background-color:rgba(255,255,255,0.9);
+	color:#000;
+	
+}
+
+
+
+
+/* 3. 左侧边栏
+------------------------------------------------------*/
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+.navbar-header { color: #FFF; }
+.templatemo-sidebar {
+    padding: 0;
+    margin-top: 0px;
+    width: 235px;
+    height:100%;
+    min-height:800px; 
+    float: left;
+    margin-right: -100%;
+    background-color: #FFF;
+    background-color:rgba(0,0,0,0.5);
+    position: absolute;
+    top:55px;
+    
+    
+}
+.templatemo-sidebar .templatemo-sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 235px;
+    padding-bottom:50px;
+    
+}
+.templatemo-sidebar .templatemo-sidebar-menu > li {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0px;
+}
+.templatemo-sidebar .templatemo-sidebar-menu > li > a {
+    display: block;
+    position: relative;
+    margin: 0;
+    border: 0px;
+    padding: 20px 15px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 300;  
+    color: #ccc;  
+}
+.templatemo-sidebar-menu a { color: black; }
+.templatemo-sidebar-menu a:hover { text-decoration: none; }
+.templatemo-sidebar-menu li.sub .templatemo-submenu { display: none; }
+.templatemo-sidebar-menu li.sub.open .templatemo-submenu { display: block; }
+.templatemo-submenu { padding-left: 0; }
+.templatemo-submenu li {
+    list-style: none;
+    background-color: #DFDFDF;
+}
+.templatemo-submenu li a {
+    display: block;
+    padding: 20px 15px;
+    margin: 0;
+}
+.templatemo-sidebar-menu > li.sub.open > a {
+    background-color: rgba(145,145,145,0.3);
+}
+.templatemo-sidebar .templatemo-sidebar-menu>li>a:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+.templatemo-sidebar .templatemo-sidebar-menu >li.active {
+	background-color: rgba(255,255,255,0.2);
+}
+.templatemo-sidebar .templatemo-sidebar-menu >li.active >a {
+	color: #1ABA66;
+}
+
+.templatemo-sidebar .templatemo-sidebar-menu > li > a > div {
+    font-size: 16px;
+    top: 2px;
+    margin-top: 1px;
+    margin-left: 1px;
+    margin-right: 4px;
+    margin-bottom: -5px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-size: 25px 25px;
+    text-align: center;
+}
+
+/*提醒数字*/
+.badge {
+    margin:4px 10px 0 0;
+	background-color: #F66;
+}
+.icon_heart_focus {background: url("../image/icon_sidebar/icon_heart_focus.png");}
+.icon_heart {background: url("../image/icon_sidebar/icon_heart.png");}
+.icon_people_focus {background: url("../image/icon_sidebar/icon_people_focus.png");}
+.icon_people {background: url("../image/icon_sidebar/icon_people.png");}
+.icon_device_focus {background: url("../image/icon_sidebar/icon_device_focus.png");}
+.icon_device {background: url("../image/icon_sidebar/icon_device.png");}
+.icon_signout_focus {background: url("../image/icon_sidebar/icon_people_signout.png");}
+.icon_signout {background: url("../image/icon_sidebar/icon_signout.png");}
+
+
+/* 4. index 主体
+------------------------------------------------------*/
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+	background-color: rgba(0,0,0,0.5);
+}
+/* 床位种类导航栏*/
+.nav-tabs {
+    min-width: 300px;
+    border: none; 
+}
+.nav-tabs > li > a {
+    color: #ccc;
+}
+#line-hr {
+    margin-top: 1px;
+    width: 90%;
+    min-width: 300px;
+    height: 2px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.tab-content {
+    margin-top: 10px;
+}
+.select-content {
+    min-width: 600px;
+    max-width: 90%;
+    margin-top: 30px;
+}
+.select-content div input[type=text] {
+    background-color: #FFF;
+    border: solid 1px #ccc;
+    width: 5em;
+}
+.select-content div input[type=submit] {
+    margin-left: 70px;
+    /*float: right;*/
+}
+.select-content div label {
+    /* color: #555; */
+    font-weight: lighter;
+}
+
+
+.watch-modal {
+    float: left;
+    width: 140px;
+    height: 150px;
+    margin:40px 60px 0px 0px;
+    padding: 15px 15px 15px 15px;
+    border-right: solid 1px #333;
+    border-bottom: solid 1px #333;
+    color: #FFF;
+    font-size: 17px;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 20px;
+}
+.watch-modal:hover {
+	 background-color: rgba(0,0,0,0.5);
+	 border-color:#222;
+}
+
+.watch-modal .bed-state-normal {
+    color: #1ad202;
+}
+.watch-modal .bed-state-error {
+    color: #ff0005;
+}
+
+
+.bed-error {
+    background-color: #f3c5ce;
+}
+/* .bed-empty {
+    background-color: #EEE;
+} */
+
+
+
+/* 5. 表格
+------------------------------------------------------*/
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td, 
+.table-bordered > tfoot > tr > td {
+    border:none;
+}
+#all-table > .table {
+    width: 90%;
+}
+
+.table-bordered {
+	border: none;
+}
+.tab-content thead {
+	background-color:rgba(0,0,0,0.4);
+}
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+	background-color:rgba(0,0,0,0.1);
+}
+.table-striped > tbody > tr:nth-child(even) > td, .table-striped > tbody > tr:nth-child(even) > th {
+	background-color:rgba(0,0,0,0.25);
+}
+
+
+.icon-edit {
+    width: 20px;
+    height: 20px;
+    background: url("../image/icon_action/icon_edit.png");
+     background-size: 20px 20px;
+}
+.icon-check {
+    width: 20px;
+    height: 20px;
+    background: url("../image/icon_action/icon_check.png");
+     background-size: 20px 20px;
+}
+.icon-remove {
+    width: 20px;
+    height: 20px;
+    background: url("../image/icon_action/icon_remove.png");
+     background-size: 20px 20px;
+}
+
+.dropdown-family {
+	background-color:rgba(0,0,0,0.7);
+}
+.dropdown-toggle {
+	background-color:rgba(255,255,255,0.2);
+	height:30px;
+	padding:2px 15px;
+	border:none;
+	color:#eee;
+}
+
+/* 页码 */
+.pagination {
+	margin-right: 10%;
+}
+.pagination > li > a, .pagination > .disabled > a, .pagination > li > span {
+	background-color: rgba(0,0,0,0.3);
+	border-color: rgba(0,0,0,0);
+}
+
+/* 6. 登录页面
+--------------------------------------------*/
+
+.log-in-body .templatemo-signin-form {
+	float:left;
+    padding-top: 30px;
+   /* padding-bottom: 450px;*/
+    width: 270px;
+    height: 300px;
+    margin: 0 auto;
+}
+.log-in-body .form-horizontal .form-group {
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+}
+.log-in-body label{
+    padding-left: 0;
+}
+.log-in-body .btn {
+    width: 100%;
+    border: none;
+    color: #FFF;
+    background-color: #1aba9c;
+}
+.log-in-body .login-tips {
+    font-size: 13;
+    color: #999;
+}
+
+.log-in-body .login-title {    
+    width: 270px;
+    height: 40px;
+   
+    font-size: 25px;
+    color: #1aba9c;
+    margin-top: 10px;
+    padding-top: 0px;
+}
+.log-in-body .login-logo {
+	float:left;
+    width: 18%;
+    height: auto;
+    margin: 0 0 0 20%;
+    margin-top:90px; 
+    /*padding-top: 50px;*/
+
+}
+.login-logo {
+	position: absolute;
+}
+.log-in-body .login-logo-image {
+	width:400px;
+}
+
+.login-logo-image-heart {
+	position: absolute;
+	left:35px;
+	top:125px;
+	
+	width:50px;
+}
+.log-in-body .template-page-wrapper {
+	float:right;
+    width: 170px;
+    height: auto;
+    margin: 0 45% 0 0;
+    margin-top:220px; 
+}
+
+.log-in-body .login-top-line {
+    width: 100%;
+    height: 6px;
+    background-color: #1aba9c;
+}
+
+
+/* 7. 个人状态页面
+--------------------------------------------*/
+.basic-info {
+    width: 880px;
+    height: 200px;
+    margin-top: 15px;
+    
+    
+}
+
+.people-info {
+	float: left;
+    width: 400px;
+    height: 200px;
+    margin-top: 0px;
+    background-color:rgba(0,0,0,0.3);
+    padding:20px;
+}
+
+.people-face {
+    float: left;
+    margin-right: 40px;
+    width: 120px;
+    height: 100%;
+}
+
+.basic-info-table {
+    float: left;
+    width: 200px;
+    height: 100%;
+    font-size: 17px;
+    line-height: 28px;
+}
+
+.basic-info-table table tr td:first-child {
+    color: #99ffb0;
+}
+.relative-info {
+    /* border-left: solid 2px #1aba9c; */
+    float: right;
+    width: 450px;
+    min-height: 200px;
+    height: auto;
+    padding: 20px 30px 20px 30px;
+    font-size: 17px;
+    line-height: 28px;
+    background-color:rgba(0,0,0,0.3);
+}
+
+/*心率信息*/
+.heart-info, .breath-info, .move-info {
+    /*border: solid 1px #ccc;*/
+    /*background-color: #e7e7e7;*/
+   
+    background-color:rgba(0,0,0,0.3);
+    width: 880px;
+    height: 290px;
+    margin: 30px 0 30px 0;
+    font-size: 17px;
+    line-height: 28px;
+}
+
+.info-title {
+	color:#EEE;
+	width:100%; 
+	padding:5px 0 5px 20px;
+	background-color:rgba(0,0,0,0.1);
+}
+.heart-info-table, .breath-info-table, .move-info-table {
+    float: right;
+    /*border: solid 1px #ccc;*/
+    width: 250px;
+    margin: 70px 30px 0 0;
+    line-height: 40px;
+    color: #bbb;
+}
+
+.highcharts-background {
+    background-color: #e7e7e7;
+}
+
+.heart-info-table table tr td:first-child,
+.breath-info-table table tr td:first-child,
+.move-info-table table tr td:first-child {
+    float: right;
+}
+.heart-info-table table tr:first-child,
+.breath-info-table table tr:first-child,
+.move-info-table table tr:first-child {
+    color: #1aba9c;
+}
+
+.heart-info-table table tr td:last-child span,
+.breath-info-table table tr td:last-child span,
+.move-info-table table tr td:last-child span {
+    font-size: 27px;
+}
+
+.heart-info-table table tr:first-child td:last-child,
+.breath-info-table table tr:first-child td:last-child,
+.move-info-table table tr:first-child td:last-child {
+    color: #1aba9c;
+}
+.heart-info-table button,
+.breath-info-table button,
+.move-info-table button {
+    float: right;
+}
+
+.chart-content {
+    /*border: solid 1px #ccc;*/
+    float: left;
+    width: 490px;
+    min-height: 170px;
+    height: auto;
+    margin: 10px -20px 0 20px;
+    font-size: 17px;
+    line-height: 28px;
+}
+.line-chart {
+    width: 400px;
+}
+
+/* 8. 人员新增表单
+--------------------------------------------*/
+.new-form {
+    width: 90%;
+    margin-top: 30px;
+}
+/*.new-form-tips {
+    float: left;
+    width: 100px;
+}*/
+.new-form tr label {
+    margin: 20px 0 20px 0;
+}
+.new-form tr td:first-child,
+.new-form-location tr td:first-child {
+    width: 90px;
+     color: #ccc;
+    font-size: 15px;
+    line-height: 15px;
+    padding-right: 20px;
+}
+.new-form-tips {
+    float: right;
+
+}
+.new-form tr td:last-child {
+    width: 200px;
+}
+.new-form-location tr label {
+    margin: 20px 0 20px 0;
+}
+.new-form-location-tips {
+    float: left;
+    width: 35px;
+    color: #ccc; 
+    font-size: 15px;
+    line-height: 15px;
+
+}
+#new-buildingId, 
+#new-roomId,
+#new-bedId {
+    width: 100px;
+    margin-right: 5px;
+}
+
+#new-form-submit {
+    width:100px;
+    margin: 30px 0 0 90px;
+}
+
+
+
+.form-control {
+	background-color: rgba(255,255,255,0.2);
+	border: 1px solid #ddd;
+	color:#FFF;
+}
+#familyModal .form-control{
+	background-color: rgba(0,0,0,0.6);
+	border: 1px solid #ddd;
+	color:#FFF;
+}
+
+
+/* 9. 家属新增表单
+--------------------------------------------*/
+.newfamily-form-tips {}
+.newfamily-form {
+    width: 90%;
+    margin-top: 30px;
+}
+
+.newfamily-form tr label {
+    margin: 20px 0 20px 0;
+}
+
+.newfamily-form tr td:first-child {
+    width: 200px;
+    color: #777;
+    font-size: 15px;
+    line-height: 15px;
+    padding-right: 20px;
+}
+.newfamily-form tr td:last-child {
+    width: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 10. Media Queries
+------------------------------------------------------*/
+@media screen and (min-width: 992px) {
+    .templatemo-sidebar {
+        width: 235px;
+        float: left;
+        position: fixed;
+        margin-right: -100%;
+    }
+}
+@media screen and (max-width: 991px) {
+    .navbar-form {
+        padding: 0;
+        margin-left: 0;
+    }
+    .navbar-header { float: none; }
+    .navbar-toggle { display: block; }
+    .templatemo-sidebar {
+        border-top: 0 !important;
+        margin: 20px;
+    }
+    .templatemo-sidebar.navbar-collapse.collapse {
+        display: none !important;
+    }
+    .templatemo-sidebar.navbar-collapse.in {
+        border-top: 0 !important;
+        margin: 20px;
+        position: relative;
+        overflow: hidden !important;
+        overflow-y: auto !important;
+        display: block !important;
+    }
+    .templatemo-content-wrapper { float: none; }
+    .templatemo-content { margin: 0; }
+}
+@media screen and (max-width: 767px) {
+    .templatemo-chart-box {
+        padding-right: 0;
+    }
+}
+
+ @font-face {    
+        font-family: 'NeuesBauenDemo';    
+        src: url('../fonts/SourceHanSansCN-Light.otf');    
+        src: url('../fonts/SourceHanSansCN-Light.otf?#iefix') format('embedded-opentype'),         
+        url('../fonts/SourceHanSansCN-Light.otf') format('woff'),         
+        url('../fonts/SourceHanSansCN-Light.otf') format('truetype'),         
+        url('../fonts/neues_bauen_demo-webfont.svg#NeuesBauenDemo') format('svg');    
+        font-weight: normal;    
+        font-style: normal;  
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
