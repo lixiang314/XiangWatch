@@ -33,6 +33,5 @@ public class connect {
     	 if(stmt!=null)stmt.close();
     	 if(conn!=null)conn.close();
      }
-	 
-	 
+
 }

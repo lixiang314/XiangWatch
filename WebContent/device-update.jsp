@@ -13,17 +13,17 @@
 	<link rel="stylesheet" href="css/main-style.css">
 </head>
 <body>
+
 <%
 String id = request.getParameter("id");
 connect conObj = new connect();
-String sql="SELECT * FROM user where id ="+id;
+String sql="SELECT * FROM device where id ="+id;
 Connection conn = conObj.connect();
 Statement stmt = conObj.stmt(conn);
 ResultSet rs = conObj.rs(stmt,sql);
 
-String name = "";
-String age = "";
-String gender = "";
+
+
 String buildId = "";
 String roomId = "";
 String bedId = "";
@@ -31,17 +31,16 @@ String deviceId = "";
 
 if(rs!=null){
 	while (rs.next()) {
-	name = rs.getString("userName");
-	age = rs.getString("age");
-	gender = rs.getString("gender");
-	buildId = rs.getString("buildId");
-	roomId = rs.getString("roomId");
-	bedId = rs.getString("bedId");
-	deviceId =rs.getString("deviceId");
-    }
+		deviceId =rs.getString("deviceId");
+		buildId = rs.getString("buildId");
+		roomId = rs.getString("roomId");
+		bedId = rs.getString("bedId");
+		}
 	
 }
 conObj.close(rs,stmt,conn);%>
+
+
 
 	<div class="template-page-wrapper">
 
@@ -56,15 +55,15 @@ conObj.close(rs,stmt,conn);%>
 						健康监测
 					</a>
 				</li>
-				<li  class="active">
-					<a href="people-manage.jsp">
-						<div class="icon_people_focus"></div>
-						人员管理
-					</a>
-				</li>
 				<li>
+					<a href="people-manage.jsp">
+						<div class="icon_people"></div>
+						人员管理
+						</a>
+				</li>
+				<li  class="active">
 					<a href="device-manage.jsp">
-						<div class="icon_device"></div>
+						<div class="icon_device_focus"></div>
 						手环管理
 					</a>
 				</li>
@@ -84,48 +83,33 @@ conObj.close(rs,stmt,conn);%>
 			<div class="templatemo-content">
 
 				<ul class="nav nav-tabs" role="tablist" id="templatemo-tabs">
-					<li class="activecover active"><a href="#all" role="tab" data-toggle="tab">编辑人员信息</a></li>
+					<li class="activecover active"><a href="#all" role="tab" data-toggle="tab">新增手环</a></li>
 					<!-- <li><a href="#unusual" role="tab" data-toggle="tab" >异常床位</a></li>
 					<li><a href="#notempty" role="tab" data-toggle="tab">非空床位</a></li> -->
 
 				</ul>
 				<div id="line-hr"></div>
 				<div class="new-form">
-					<form name="form-people-new" action="action/action-update-people.jsp" method="post">
+					<form name="form-device-new" action="action/action-update-device.jsp" method="post">
 					<input type="hidden" name="id" value="<%=id%>">
 						<table>
 							<tbody>
 								<tr>
-									<td><label for="name" class="new-form-tips">姓名</label></td>
-									<td><input type="text" class="form-control" id="new-name" value="<%=name %>" name="new-name"></td>
+									<td><label for="name" class="new-form-tips">手环编号</label></td>
+									<td><input type="text" class="form-control" id="new-deviceId" value="<%=deviceId %>" name="new-deviceId"></td>
 								</tr>
-
-								<tr>
-									<td><label for="age" class="new-form-tips">年龄</label></td>
-									<td><input type="text" class="form-control" id="new-age" value="<%=age %>"  name="new-age"></td>
-								</tr>
-
-								<tr>
-									<td><label for="gender" class="new-form-tips">性别</label></td>
-									<td>
-										<span style="margin-right:20px;font-size:15px;">
-											<input type="radio" name="new-gender" value="男" <%if(gender.equals("男")){ %>checked="checked"<%} %>> 男 
-										</span>
-										<span style="margin-right:20px;font-size:15px;">
-											<input type="radio" name="new-gender" value="女" <%if(gender.equals("女")){ %>checked="checked"<%} %>> 女 
-										</span>
-										
-									</td>
-								</tr>
-								
-								<tr>
-									<td><label for="deviceId" class="new-form-tips">手环编号</label></td>
-									<td><input type="text" class="form-control" id="new-deviceId" value="<%=deviceId %>"  name="new-deviceId"></td>
-								</tr>
-
-
 
 								
+
+								<!-- <tr>
+									<td><label for="name" class="new-form-tips">配置时间</label></td>
+									<td><input type="text" class="form-control" id="new-date" value=""  name="new-date"></td>
+								</tr> -->
+
+								<!-- <tr>
+									<td><label for="deviceId" class="new-form-tips">设备信息</label></td>
+									<td><input type="text" class="form-control" id="new-deviceId" value=""  name="new-deviceId"></td>
+								</tr> -->
 							</tbody>
 						</table>
 

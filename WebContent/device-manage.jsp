@@ -139,7 +139,7 @@
 									<td><span><%=buildId %></span>号楼<span><%=roomId %></span>室</td>
 									<td><span><%=bedId %></span>号</td>              
 									<td><a href="#"><div class="icon-check"></div></a></td>
-									<td><a href="#"><div class="icon-edit"></div></a></td>
+									<td><a href="device-update.jsp?id=<%=id%>"><div class="icon-edit"></div></a></td>
 									<td><div class="icon-remove"  href="javascript:;" data-toggle="modal" data-target="#deleteModal-<%=id %>"></div></td>
 								</tr><%
 								}

@@ -22,7 +22,6 @@ name = request.getParameter("family-name");
 relationship = request.getParameter("family-relationship");
 phone = request.getParameter("family-phone");
 
-
 	connect conObj = new connect();
 	Connection conn = conObj.connect();
 	Statement stmt = conObj.stmt(conn);
