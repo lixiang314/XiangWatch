@@ -2,33 +2,46 @@
 
 
 //1.checkbox全选-----------------------------------------------------
+//function isAllChecked(){
+//	var checkall = document.getElementById("checkboxAll");
+//	if(checkall.checked==true){
+//		 selectAll();
+//	}
+//	else
+//		emptyAll();
+//}
+//
+//function selectAll(){ //全选     
+//    // var inputs = document.getElementsByTagName("input");  
+//    var inputs = document.getElementsByClassName("everyCheck");     
+//    for(var i=0;i<inputs.length;i++){     
+//      if(inputs[i].getAttribute("type") == "checkbox"){     
+//        inputs[i].checked = true;     
+//      }     
+//    }     
+//  }
+//
+//function emptyAll(){ //全不选     
+//	var inputs = document.getElementsByClassName("everyCheck");     
+//	for(var i=0;i<inputs.length;i++){     
+//	  if(inputs[i].getAttribute("type") == "checkbox"){     
+//	    inputs[i].checked = false;     
+//	  }     
+//	}     
+//}
+
+
 function isAllChecked(){
+	var $everyCheck = $(".everyCheck[type='checkbox']");
 	var checkall = document.getElementById("checkboxAll");
 	if(checkall.checked==true){
-		 selectAll();
+		$everyCheck.prop("checked", true);//全选
 	}
 	else
-		emptyAll();
+		$everyCheck.prop("checked", false);
 }
 
-function selectAll(){ //全选     
-    // var inputs = document.getElementsByTagName("input");  
-    var inputs = document.getElementsByClassName("everyCheck");     
-    for(var i=0;i<inputs.length;i++){     
-      if(inputs[i].getAttribute("type") == "checkbox"){     
-        inputs[i].checked = true;     
-      }     
-    }     
-  }
 
-function emptyAll(){ //全不选     
-	var inputs = document.getElementsByClassName("everyCheck");     
-	for(var i=0;i<inputs.length;i++){     
-	  if(inputs[i].getAttribute("type") == "checkbox"){     
-	    inputs[i].checked = false;     
-	  }     
-	}     
-}
 
 
 
@@ -46,7 +59,6 @@ function deleteCheckPeople(max){
 		}
 		else continue;
 	}
-	array = array.substr(0,array.length-1);//减掉最后一个or
 	window.self.location = "action/action-delete-people.jsp?idArray="+array;
 }
 
@@ -60,14 +72,13 @@ function deleteCheckDevice(max){
 		}
 		else continue;
 	}
-	array = array.substr(0,array.length-1);//减掉最后一个_
 	window.self.location = "action/action-delete-device.jsp?idArray="+array;
 }
 
 
 
 
-
+首页心跳效果
 $(document).ready(function(){
 	var $heart = $(".login-logo-image-heart");
 	heartbeat();
