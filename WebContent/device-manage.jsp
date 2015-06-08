@@ -238,7 +238,7 @@
 			<h4 class="modal-title" id="myModalLabel">确认要删除<span style="color:#09a98b;"><%=deviceId %></span>号设备的所有记录吗？（一旦删除即无法撤销！）</h4>
 			</div>
 			<div class="modal-footer">
-			<a href="action/action-delete-people.jsp?id=<%=idD %>" class="btn btn-danger">确认</a>
+			<a href="action/action-delete-device.jsp?id=<%=idD %>" class="btn btn-danger">确认</a>
 			<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 			</div>
 			</div>
