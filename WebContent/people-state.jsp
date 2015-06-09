@@ -4,12 +4,34 @@
     <%@page import="java.sql.*" %>
     <%@ page import="com.myservlet.connect"%>
     <%@ page import="java.net.URLEncoder"%>
-    <% 
+    
+<%@ page import="org.jfree.data.general.DefaultPieDataset"%>
+<%@ page import="org.jfree.data.category.CategoryDataset" %>
+<%@ page import="org.jfree.data.category.DefaultCategoryDataset" %>
+<%@ page import="org.jfree.chart.JFreeChart"%>
+<%@ page import="org.jfree.chart.plot.PiePlot"%>
+<%@ page import="org.jfree.chart.ChartRenderingInfo"%>
+<%@ page import="org.jfree.chart.servlet.ServletUtilities"%>
+<%@ page import="org.jfree.chart.urls.StandardPieURLGenerator"%>
+<%@ page import="org.jfree.chart.entity.StandardEntityCollection"%>
+<%@ page import="org.jfree.chart.encoders.SunPNGEncoderAdapter"%>
+<%@ page import="org.jfree.chart.StandardChartTheme"%>
+<%@ page import="org.jfree.chart.ChartFactory"%>
+<%@ page import="org.jfree.chart.plot.CategoryPlot"%>
+<%@ page import="org.jfree.chart.plot.PlotOrientation"%>
+<%@ page import="org.jfree.chart.axis.CategoryAxis"%>
+<%@ page import="org.jfree.chart.renderer.category.BarRenderer"%>
+<%@ page import="org.jfree.chart.labels.StandardCategoryItemLabelGenerator"%>
+<%@ page import="java.awt.Font"%>
+<%@ page import="java.awt.Color"%>
+<% 
 request.setCharacterEncoding("UTF-8"); 
 response.setCharacterEncoding("UTF-8"); 
 response.setContentType("text/html; charset=utf-8"); 
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+  
 
 <html lang="en">
 <head>
@@ -21,6 +43,151 @@ response.setContentType("text/html; charset=utf-8");
 
 </head>
 
+
+<%
+	
+	
+	ChartRenderingInfo info = new ChartRenderingInfo(new StandardEntityCollection());
+
+ 	//实现折现图
+ 	DefaultCategoryDataset mDatasetline = new DefaultCategoryDataset();
+	mDatasetline.addValue(51, "First", "0:00");
+	mDatasetline.addValue(54, "First", "1:00");
+	mDatasetline.addValue(53, "First", "2:00");
+	mDatasetline.addValue(56, "First", "3:00");
+	mDatasetline.addValue(54, "First", "4:00");
+	mDatasetline.addValue(59, "First", "5:00");
+	mDatasetline.addValue(58, "First", "6:00");
+	mDatasetline.addValue(56, "First", "7:00");
+	mDatasetline.addValue(57, "First", "8:00");
+	mDatasetline.addValue(55, "First", "9:00");
+	
+	DefaultCategoryDataset mDatasetline2 = new DefaultCategoryDataset();
+	mDatasetline2.addValue(15, "First", "0:00");
+	mDatasetline2.addValue(13, "First", "1:00");
+	mDatasetline2.addValue(14, "First", "2:00");
+	mDatasetline2.addValue(15, "First", "3:00");
+	mDatasetline2.addValue(18, "First", "4:00");
+	mDatasetline2.addValue(17, "First", "5:00");
+	mDatasetline2.addValue(18, "First", "6:00");
+	mDatasetline2.addValue(16, "First", "7:00");
+	mDatasetline2.addValue(14, "First", "8:00");
+	mDatasetline2.addValue(17, "First", "9:00");
+	
+	
+	DefaultCategoryDataset mDatasetline3 = new DefaultCategoryDataset();
+	mDatasetline3.addValue(0, "First", "0:00");
+	mDatasetline3.addValue(0, "First", "1:00");
+	mDatasetline3.addValue(0, "First", "2:00");
+	mDatasetline3.addValue(0, "First", "3:00");
+	mDatasetline3.addValue(0, "First", "4:00");
+	mDatasetline3.addValue(0, "First", "5:00");
+	mDatasetline3.addValue(0, "First", "6:00");
+	mDatasetline3.addValue(0.2, "First", "7:00");
+	mDatasetline3.addValue(0.4, "First", "8:00");
+	mDatasetline3.addValue(0.5, "First", "9:00");
+
+
+	
+	StandardChartTheme mChartThemeline = new StandardChartTheme("CN");
+	mChartThemeline.setLargeFont(new Font("黑体", Font.BOLD, 8));
+	mChartThemeline.setExtraLargeFont(new Font("宋体", Font.PLAIN, 13));
+	mChartThemeline.setRegularFont(new Font("宋体", Font.PLAIN, 13));
+	ChartFactory.setChartTheme(mChartThemeline);
+			
+	JFreeChart mChartline = ChartFactory.createLineChart(
+				null,null,null,
+				mDatasetline,PlotOrientation.VERTICAL,
+				false, false, false);
+	
+	JFreeChart mChartline2 = ChartFactory.createLineChart(
+			null,null,null,
+			mDatasetline2,PlotOrientation.VERTICAL,
+			false, false, false);
+	
+	JFreeChart mChartline3 = ChartFactory.createLineChart(
+			null,null,null,
+			mDatasetline3,PlotOrientation.VERTICAL,
+			false, false, false);
+		
+	CategoryPlot mPlotline = (CategoryPlot)mChartline.getPlot();
+	mPlotline.setBackgroundPaint(Color.WHITE);
+	mPlotline.setRangeGridlinePaint(Color.BLUE);//背景底部横虚线
+	mPlotline.setOutlinePaint(null);//边界线
+	
+	CategoryPlot mPlotline2 = (CategoryPlot)mChartline2.getPlot();
+	mPlotline2.setBackgroundPaint(Color.WHITE);
+	mPlotline2.setRangeGridlinePaint(Color.BLUE);//背景底部横虚线
+	mPlotline2.setOutlinePaint(null);//边界线
+	
+	CategoryPlot mPlotline3 = (CategoryPlot)mChartline3.getPlot();
+	mPlotline3.setBackgroundPaint(Color.WHITE);
+	mPlotline3.setRangeGridlinePaint(Color.BLUE);//背景底部横虚线
+	mPlotline3.setOutlinePaint(null);//边界线
+	
+	//500是图片长度，300是图片高度
+	String filenameline = ServletUtilities.saveChartAsPNG(mChartline, 530, 210, info, session);
+	String graphURLline = request.getContextPath() + "/servlet/DisplayChart?filename=" + filenameline; 
+	
+	String filenameline2 = ServletUtilities.saveChartAsPNG(mChartline2, 530, 210, info, session);
+	String graphURLline2 = request.getContextPath() + "/servlet/DisplayChart?filename=" + filenameline2; 
+	
+	String filenameline3 = ServletUtilities.saveChartAsPNG(mChartline3, 530, 210, info, session);
+	String graphURLline3 = request.getContextPath() + "/servlet/DisplayChart?filename=" + filenameline3; 
+  %>
+  
+  <%
+	//显示柱状图
+	DefaultCategoryDataset mDataset = new DefaultCategoryDataset();
+	mDataset.addValue(0, "", "0:00");
+	mDataset.addValue(0, "", "2:00");
+	mDataset.addValue(0, "", "3:00");
+	mDataset.addValue(0, "", "4:00");
+	mDataset.addValue(0, "", "5:00");
+	mDataset.addValue(0, "", "6:00");
+	mDataset.addValue(0.2, "", "7:00");
+	mDataset.addValue(0.3, "", "8:00");
+	mDataset.addValue(0.5, "", "9:00");
+
+	
+	//创建主题样式
+	StandardChartTheme mChartTheme = new StandardChartTheme("UK");
+	//设置图表标题
+	mChartTheme.setExtraLargeFont(new Font("黑体", Font.BOLD, 8));
+	//设置轴向字体
+	mChartTheme.setLargeFont(new Font("宋体", Font.PLAIN, 8));
+	//设置图例字体
+	mChartTheme.setRegularFont(new Font("宋体", Font.PLAIN, 8));
+	//应用主题
+	ChartFactory.setChartTheme(mChartTheme);
+	
+	JFreeChart mChart = ChartFactory.createBarChart3D(
+				null, 
+				null, 
+				null,
+				mDataset, 
+				PlotOrientation.VERTICAL, 
+				false, 
+				false,false);
+	//设置内部属性
+	CategoryPlot mPlot = (CategoryPlot)mChart.getPlot();
+	CategoryAxis mDomainAxis = mPlot.getDomainAxis();
+	//设置柱状图距离x轴最左端（即y轴）的距离百分比10%
+	//mDomainAxis.setLowerMargin(0.1);
+	mDomainAxis.setUpperMargin(0.1);
+	//柱体显示数值
+	BarRenderer mRenderer = new BarRenderer();
+	mRenderer.setItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+	mRenderer.setItemLabelFont(new Font("宋体", Font.PLAIN, 15));
+	mRenderer.setItemLabelsVisible(true);
+	mPlot.setRenderer(mRenderer);
+	
+	//500是图片长度，300是图片高度
+	String filenamebar = ServletUtilities.saveChartAsPNG(mChart, 530, 210, info, session);
+	String graphURLbar = request.getContextPath() + "/servlet/DisplayChart?filename=" + filenamebar;  
+ %>
+  
+  
 <%
 String id = request.getParameter("id");
 
@@ -119,7 +286,7 @@ conObj.close(rs,stmt,conn);
 					</div>
 
 					<div class="basic-info-table">
-						<table width="100%">
+						<table width="100%" style="line-height:32px;font-size:17px;">
 							<tr>
 								<td width="30%">姓名</td>
 								<td width="70%"> <span><%=name %></span></td> 
@@ -202,8 +369,10 @@ conObj.close(rs,stmt,conn);
 					<div class="chart-content">
 						            
 						<!-- <canvas id="heart-chart"></canvas>   -->
-						<!-- <div id="heart-chart"  style="width: 550px; height: 230px; margin: 0 0 0 -20px;"></div> -->      
-
+						<!-- <div id="heart-chart"  style="width: 550px; height: 230px; margin: 0 0 0 -20px;"></div> --> 
+						<!-- <div style="width:530px;height:210px;background-color:rgba(0,100,200,0.3);position:absolute;filter: alpha (opacity=50);-moz-opacity: 0.50; opacity: 0.50;"></div> -->     
+						<img src="<%= graphURLline %>" width=530 height=210 border=0 usemap="#<%= filenameline %>" style="filter: alpha (opacity=50);-moz-opacity: 0.50; opacity: 0.50;">
+									
 					</div>
 
 					<div class="heart-info-table">
@@ -232,7 +401,8 @@ conObj.close(rs,stmt,conn);
 				<p class="info-title">呼吸率曲线变化图</p>
 					<div class="chart-content">
 						          
-						<!-- <div id="breath-chart"  style="width: 550px; height: 230px; margin: 0 0 0 -20px;"></div> -->                      
+						<!-- <div id="breath-chart"  style="width: 550px; height: 230px; margin: 0 0 0 -20px;"></div> -->
+						<img src="<%= graphURLline2 %>" width=530 height=210 border=0 usemap="#<%= filenameline2 %>" style="filter: alpha (opacity=50);-moz-opacity: 0.50; opacity: 0.50;">                      
 					</div>
 
 					<div class="breath-info-table">
@@ -259,7 +429,8 @@ conObj.close(rs,stmt,conn);
 				<p class="info-title">运动曲线变化图</p>
 					<div class="chart-content">
 					          
-						<div id="move-chart"  style="width: 550px; height: 230px; margin: 0 0 0 -20px;"></div>                       
+						<!-- <div id="move-chart"  style="width: 550px; height: 230px; margin: 0 0 0 -20px;"></div> -->
+						<img src="<%= graphURLbar %>" width=530 height=210 border=0 usemap="#<%= filenamebar %>" style="filter: alpha (opacity=50);-moz-opacity: 0.50; opacity: 0.50;">                       
 					</div>
 
 					<div class="move-info-table">
@@ -270,11 +441,11 @@ conObj.close(rs,stmt,conn);
 							</tr>
 							<tr>
 								<td>今日累计：</td>
-								<td><span>2.3</span>公里</td>
+								<td><span>1.0</span>公里</td>
 							</tr>
 							<tr>
 								<td>本周累计：</td>
-								<td><span>11</span>公里</td>
+								<td><span>11.2</span>公里</td>
 							</tr>
 						</table>
 						
@@ -319,15 +490,15 @@ conObj.close(rs,stmt,conn);
 							<form action="action/action-new-family.jsp" method="post">
 								<table><tbody>
 									<tr>
-										<td><label for="name">姓名</label></td>
+										<td><label style="float:right;">姓名</label></td>
 										<td><input type="text" class="form-control" name="family-name"></td>
 									</tr>
 									<tr>
-										<td><label for="name">与老人关系</label></td>
+										<td><label style="float:right;">与用户关系</label></td>
 										<td><input type="text" class="form-control" name="family-relationship"></td>
 									</tr>
 									<tr>
-										<td><label for="name">手机号码</label></td>
+										<td><label style="float:right;">手机号码</label></td>
 										<td><input type="text" class="form-control" name="family-phone"></td>
 									</tr>
 									<input type="hidden" name="family-userId" value="<%=id%>">
@@ -402,112 +573,10 @@ conObj.close(rs,stmt,conn);
 	<script src="js/Chart.min.js"></script>
 	<script src="js/templatemo_script.js"></script>
 	<!-- <script type="text/javascript" src="jquery-1.10.1.js"></script>-->
-	<script type="text/javascript" src="js/highcharts.js"></script> 
-
-
-	<script type="text/javascript"> 
-		var chart1; // global
-		var chart2; // global
-		
-		function requestData1() {
-
-			$.ajax({
-				url: 'echojson/echojson-heart.jsp', 
-				success: function(point) {
-					var series1 = chart1.series[0],
-						shift1 = series1.data.length > 20;
-					chart1.series[0].addPoint(eval(point), true, shift1);
-					setTimeout(requestData1, 1000);	
-				},
-				cache: false
-			});
-		}
-
-
-		function requestData2() {
-			$.ajax({
-				url: 'echojson/echojson-breath.jsp', 
-				success: function(point2) {
-					var series2 = chart2.series[0],
-						shift2 = series2.data.length > 20; 
-					chart2.series[0].addPoint(eval(point2), true, shift2);
-					setTimeout(requestData2, 1000);	
-				},
-				cache: false
-			});
-
-		}
-		
 
 
 
-		$(document).ready(function() {
-// 心率表--------------------------------------------
-			chart1 = new Highcharts.Chart({
-				chart: {
-					renderTo: 'heart-chart',
-					defaultSeriesType: 'spline',
-					events: {
-						load: requestData1
-					}
-				},
-				title: {
-					text: ''
-				},
-				xAxis: {
-					type: 'datetime',
-					tickPixelInterval: 150,
-					maxZoom: 20 * 1000
-				},
-				yAxis: {
-					minPadding: 0.2,
-					maxPadding: 0.2,
-					title: {
-						text: '',
-						margin: 20
-					}
-				},
-				series: [{
-					name: '心率（次/分）',
-					data: []
-				}]
-			});	
 
-
-// 呼吸率表--------------------------------------------
-			chart2 = new Highcharts.Chart({
-				chart: {
-					renderTo: 'breath-chart',
-					defaultSeriesType: 'spline',
-					events: {
-						load: requestData2
-					}
-				},
-				title: {
-					text: ''
-				},
-				xAxis: {
-					type: 'datetime',
-					tickPixelInterval: 150,
-					maxZoom: 20 * 1000
-				},
-				yAxis: {
-					minPadding: 0.2,
-					maxPadding: 0.2,
-					title: {
-						text: '',
-						margin: 20
-					}
-				},
-				series: [{
-					name: '呼吸率（次/分）',
-					data: []
-				}]
-			});	
-
-
-		});
-		</script>
 
 
   </body>
